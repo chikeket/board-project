@@ -3,7 +3,7 @@
     <h3>{{ post.title }}</h3>
     <p>{{ post.content }}</p>
     <small>작성일: {{ post.date }}</small>
-    <p>작성자: {{ uid }}</p>
+    <p>작성자: {{ post.uid }}</p>
   </div>
 </template>
 <script>
@@ -16,7 +16,7 @@ export default {
   props: {
     post: { type: Object, default: () => {} },
   },
-  inject: ["uid"],
+  inject: ["user"],
 };
 </script>
 
@@ -25,7 +25,7 @@ export default {
   border: 1px solid #ccc;
   padding: 15px;
   margin-bottom: 15px;
-  border-radius: 8pe;
+  border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 </style>
