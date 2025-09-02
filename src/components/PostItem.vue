@@ -3,7 +3,7 @@
     <h3>{{ post.title }}</h3>
     <p>{{ post.content }}</p>
     <small>작성일: {{ post.date }}</small>
-    <p>작성자: {{ post.uid }}</p>
+    <p>작성자: {{ post.writer }}</p>
   </div>
 </template>
 <script>
@@ -16,7 +16,7 @@ export default {
   props: {
     post: { type: Object, default: () => {} },
   },
-  inject: ["user"],
+  inject: ["user"], //provide()에 정의된 변수
 };
 </script>
 

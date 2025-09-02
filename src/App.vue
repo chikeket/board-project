@@ -42,15 +42,21 @@ export default {
     return {
       user: { id: "", name: "" },
 
-      posts: [
-        // {
-        //   id: 1,
-        //   title: "글등록연습",
-        //   content: "잘등록됩니다.",
-        //   date: new Date().toLocaleDateString(),
-        // },
-      ],
+      // posts: [
+      //   // {
+      //   //   id: 1,
+      //   //   title: "글등록연습",
+      //   //   content: "잘등록됩니다.",
+      //   //   date: new Date().toLocaleDateString(),
+      //   // },
+      // ],
     };
+  },
+  computed: {
+    // 계산된 속성.
+    posts() {
+      return this.$store.getters.getBoardList;
+    },
   },
   methods: {
     addPost(payload) {
@@ -83,6 +89,7 @@ export default {
           //로그인 처리 구현
           this.user.id = email;
           this.user.name = nickname; //로그인 성공 시 uid값 업데이트
+          this.$store.commit("setId", email);
           alert(nickname + "님 로그인 되었습니다.");
         },
         fail: (error) => console.log(error),
@@ -102,6 +109,9 @@ export default {
     return {
       user: this.user, // App.vue > PostList.vue > PostItem.vue
     };
+  },
+  mounted() {
+    console.log(this.$store);
   },
 };
 </script>
